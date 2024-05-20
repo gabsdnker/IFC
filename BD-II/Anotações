@@ -1,0 +1,29 @@
+Rodar MySQL no Ubuntu
+
+Install DOCKER 
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+Executando servidor postgres e pgadmin4 (05/09/2023)
+
+Instalar docker compose
+
+sudo apt install docker-compose
+baixar o arquivo .yaml que contém configuração de postgres e pgadmin
+https://gitlab.com/hvescovi/prog23/-/tree/main/docker/pgAdmin 
+
+“levantar” os containers:
+docker-compose up
+
+acessar o pgadmin4
+no navegador, acessar: http://localhost:5050/login?next=%2F
+usuário: admin@admin.com
+senha: root
+acesso via dbeaver: usuário postgres, senha root
+
+Iniciando um servidor mysql
+
+docker run --detach --name=test3-mysql -e MYSQL_ROOT_PASSWORD=testando -e MYSQL_ROOT_HOST=% --publish 3306:3306 mysql/mysql-server:5.7
+
+-e: variável de ambiente
+--publish: publicar o serviço do container em porta (interna:externa)
+--detach: rodar em background (não travar o terminal)

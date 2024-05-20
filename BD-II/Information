@@ -1,0 +1,38 @@
+https://docs.google.com/document/d/1T9J-6P_9C2mLfWAZqlngLVT_zwpC9wB2PrhoIKz-B0o/edit
+https://gitlab.com/hvescovi/prog23/-/tree/main/bd/datasets/employees
+https://www.dropbox.com/sh/h72f7jbpam36jtz/AAB5vtscfwwMG2feE-FuN6lea/01-transacoes/a2?dl=0&preview=53-AV3-a.txt&subfolder_nav_tracking=1
+
+file:///home/aluno/Downloads/Boletim%20169%20-%2005%20de%20Agosto%20de%202011.pdf
+
+preparativos para a importação:
+
+sqlite> CREATE table chicago (nome text, profissao text, departamento text, full_ou_part text, assalariado_ou_horista text, horas_tipicas int, salario_anual float, "Hourly Rate" float);
+
+$ tail -n +2 test.csv > test_clean.csv
+
+i) Obtenha a média dos salários, considerando apenas quem recebe salário anual.
+
+  SELECT avg(salario_anual) FROM chicago
+  WHERE assalariado_ou_horista = 'Salary'
+
+ii) Obtenha a média dos salários, considerando apenas quem recebe salário por hora.
+
+  SELECT avg("Hourly Rate" * 251 * horas_tipicas / 5) FROM chicago 
+  WHERE assalariado_ou_horista = 'Hourly'
+
+iii) Verifique qual é a maior média (dos assalariados ou dos horistas).
+
+  SELECT avg(salario_anual) FROM chicago
+  WHERE assalariado_ou_horista = 'Salary'
+  UNION
+  SELECT avg("Hourly Rate" * 251 * horas_tipicas / 5) FROM chicago 
+  WHERE assalariado_ou_horista = 'Hourly'
+
+usando visão:
+
+  CREATE view salarios AS
+  SELECT avg(salario_anual) FROM chicago
+  WHERE assalariado_ou_horista = 'Salary'
+  UNION
+  SELECT avg("Hourly Rate" * 251 * horas_tipicas / 5) FROM chicago 
+  WHERE assalariado_ou_horista = 'Hourly'

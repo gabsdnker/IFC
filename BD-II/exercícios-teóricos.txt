@@ -1,0 +1,27 @@
+1) questões do poscomp 2022:
+https://github.com/hvescovi/hvescovi.github.io/blob/master/08-poscomp/2022_poscomp_prova.pdf
+
+  a) Questão 51
+  b) Questão 64
+  c) Questão 67
+
+2) questões do poscomp 2019:
+https://github.com/hvescovi/hvescovi.github.io/blob/master/08-poscomp/2019_poscomp_prova.pdf
+
+  a) Questão 51 (ATENÇÃO! ESSA EU ERREI)
+
+3) questões do poscomp 2018:
+https://github.com/hvescovi/hvescovi.github.io/blob/master/08-poscomp/2018_poscomp_prova.pdf
+
+  a) Questão 51 (ATENÇÃO! ESSA EU ERREI)
+
+4) questões do ENADE 2017:
+https://github.com/hvescovi/hvescovi.github.io/blob/master/05-enade/BCC/2017_bcc_bacharelado_prova.pdf
+
+  a) Questão 19 (obs: tem um erro na questão, considerar chave primária de Deputado igual a idDeputado)
+  b) Questão 34 (por curiosidade; revisar as formas normais antes de fazer a questão) <====== ainda ñao fiz!
+
+5) questões do ENADE 2014:
+https://github.com/hvescovi/hvescovi.github.io/blob/master/05-enade/BCC/2014_bcc_bacharelado_prova.pdf
+
+  a) Questão 24

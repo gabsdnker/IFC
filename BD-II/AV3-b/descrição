@@ -1,0 +1,130 @@
+Nome: Gabrielli Danker e Gabriel Carvalho
+
+Avaliação AV3-b
+
+Esta avaliação ocorrerá sobre a base de dados Sakila, portanto dedique um tempo para compreender essa base de dados.
+
+AÇÕES A SEREM FEITAS:
+
+A1) elaborar e fornecer comandos SQL que utilizem os recursos abaixo. Além do comando SQL, você deve fornecer também uma descrição textual explicando no que consistem os resultados retornados. Caso queira, pode também explicar o SQL.
+
+  a) consultas aninhadas: Consulta que retorna informações de uma tabela com base em informações de outra tabela.
+
+  SELECT first_name, last_name
+  FROM customer
+  WHERE customer_id IN (SELECT customer_id FROM rental WHERE return_date IS NULL);
+
+  ## Neste exemplo, a consulta aninhada retorna os nomes dos clientes que têm aluguéis ativos.
+  
+  b) consultas aninhadas correlacionadas: Consulta onde a subconsulta faz referência a uma coluna da consulta principal.
+
+  SELECT film_id, title
+  FROM film
+  WHERE length > (SELECT AVG(length) FROM film);
+
+  ## Aqui, a subconsulta correlacionada calcula a média de duração dos filmes e a consulta principal retorna os filmes com uma 
+  duração maior do que a média.
+  
+  c) exists: Retorna verdadeiro se a subconsulta retornar algum resultado.
+
+  SELECT customer_id, first_name, last_name
+  FROM customer
+  WHERE EXISTS (SELECT 1 FROM rental WHERE rental.customer_id = customer.customer_id);
+  
+  ## Isso retorna os clientes que fizeram pelo menos um aluguel.
+  
+  d) unique ou distinct: Remove valores duplicados de um conjunto de resultados.
+
+  SELECT DISTINCT actor_id
+  FROM actor;
+  
+  ## Isso retorna todas as cidades distintas na tabela de endereços.
+  
+  e) junções naturais:Une tabelas com base nas colunas que têm o mesmo nome.
+  
+  SELECT customer.first_name, customer.last_name, rental.rental_date
+  FROM customer
+  NATURAL JOIN rental;
+  
+  ## Isso retorna informações de clientes e aluguéis combinando automaticamente as colunas com o mesmo nome.
+
+  f) junção left ou right: Realiza uma junção mantendo todos os registros da tabela à esquerda (LEFT) ou à direita (RIGHT).
+  
+  SELECT customer.first_name, customer.last_name, rental.rental_date
+  FROM customer
+  LEFT JOIN rental ON customer.customer_id = rental.customer_id;
+  
+  ## Isso retorna todos os clientes, mesmo que eles não tenham aluguéis (aluguéis nulos são incluídos).
+  
+  g) agregação: Realiza cálculos em grupos de registros.
+
+  SELECT staff_id, COUNT(rental_id) AS num_rentals
+  FROM rental
+  GROUP BY staff_id;
+  
+  ## Isso retorna o número de aluguéis por loja.
+  
+  h) group by: Agrupa registros com base em uma ou mais colunas.
+  
+  SELECT `length` , AVG(rental_duration) AS avg_duration
+  FROM film
+  GROUP BY `length` ;
+  
+  ## Isso calcula a duração média dos aluguéis para cada loja.
+
+A2) fornecer o comando de criação de uma visão;
+
+CREATE VIEW customer_info AS
+SELECT c.customer_id, c.first_name, c.last_name, a.address
+FROM customer c
+JOIN address a ON c.address_id = a.address_id;
+
+## Este comando cria uma visão chamada "customer_info" que combina informações de clientes e endereços em uma única visão.
+
+A3) elaborar um programa (sugestão: em python) que percorra os registros obtidos por um dos comandos SQL's que foi criado nos itens "a" a "h".
+
+## Aqui está um exemplo de um programa Python que percorre os registros obtidos pela consulta A1a (clientes com aluguéis ativos):
+import mysql.connector
+
+# Conecta ao banco de dados
+conn = mysql.connector.connect(
+    host="seu_host",
+    user="seu_usuario",
+    password="sua_senha",
+    database="sakila"
+)
+
+# Cria um cursor
+cursor = conn.cursor()
+
+# Consulta SQL
+sql = """
+    SELECT first_name, last_name
+    FROM customer
+    WHERE customer_id IN (SELECT customer_id FROM rental WHERE return_date IS NULL)
+"""
+
+# Executa a consulta
+cursor.execute(sql)
+
+# Percorre os registros
+for (first_name, last_name) in cursor:
+    print(f"Nome: {first_name} {last_name}")
+
+# Fecha a conexão
+conn.close()
+
+## Certifique-se de substituir "seu_host", "seu_usuario" e "sua_senha" pelas informações corretas de conexão ao seu banco de dados MySQL.
+
+IMPORTAÇÃO DB SAKILA
+
+$ mysql 
+mysql> source sakila-schema.sql
+mysql> source sakila-data.sql
+mysql> select * from actor;
+mysql> exit
+
+No laboratório do IFC, use: 
+$ mysql -u root -p
+(a senha é root)
+

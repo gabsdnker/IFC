@@ -1,0 +1,60 @@
+Avaliação AV3-a
+
+PODE SER FEITA INDIVIDUALMENTE OU EM DUPLA
+
+1) Considere a base de dados de salários em Chicago.
+2) Deseja-se aproximar a média salarial anual dos trabalhadores que atuam por hora com a média dos demais trabalhadores.
+3) Sendo assim, é necessário, primeiramente, verificar qual é a média salarial maior.
+4) A seguir, é preciso incrementar os valores referentes à população que possuir a menor média salarial (horista ou não-horistas) até que as médias fiquem semelhantes.
+5) Idealmente, aumenta-se percentualmente o incremento até que uma média ultrapasse a outra.
+6) Deseja-se saber qual é o incremento percentual a ser atribuído a todos os indivíduos do grupo de menor média salarial para que as médias dos dois grupos fiquem similares.
+7) Realize essa tarefa aplicando um fator multiplicador (1.x) no SQL que retorna os salários do grupo, até encontrar o melhor valor de "x"; quando descobrir o melhor valor de "x", aplique um update para fazer a atualização.
+
+Na entrega da tarefa:
+a) apresente o valor x encontrado
+b) apresente o(s) SQL(s) utilizado(s) para encontrar x
+c) apresente o comando update
+
+-- 1) Calcular as médias salariais dos grupos horistas e assalariados
+SELECT
+  AVG(CASE WHEN "Salary or Hourly"  = 'Hourly' THEN "Hourly Rate" ELSE NULL END) AS media_salario_horista,
+  AVG(CASE WHEN "Salary or Hourly" = 'Salary' THEN "Annual Salary" ELSE NULL END) AS media_salario_assalariado
+FROM chicago;
+
+-- 2) Encontrar o fator multiplicador "x" para ajustar os salários dos horistas
+WITH medias AS (
+    SELECT
+      AVG(CASE WHEN "Salary or Hourly" = 'Hourly' THEN "Hourly Rate" ELSE NULL END) AS media_salario_horista,
+    AVG(CASE WHEN "Salary or Hourly" = 'Salary' THEN "Annual Salary" ELSE NULL END) AS media_salario_assalariado
+ FROM chicago
+)
+SELECT
+  media_salario_assalariado / media_salario_horista AS fator_multiplicador
+FROM medias;
+
+-- 3) Calcular o incremento percentual necessário para tornar as médias similares
+WITH medias AS (
+   SELECT
+    AVG(CASE WHEN "Salary or Hourly" = 'Hourly' THEN "Hourly Rate" ELSE NULL END) AS media_salario_horista,
+   AVG(CASE WHEN "Salary or Hourly" = 'Salary' THEN "Annual Salary" ELSE NULL END) AS media_salario_assalariado
+ FROM chicago
+)
+SELECT
+   (media_salario_assalariado - media_salario_horista) / media_salario_horista AS incremento_percentual
+FROM medias;
+
+-- 4) Atualizar os salários dos horistas com o fator multiplicador calculado
+WITH medias AS (
+SELECT
+AVG(CASE WHEN "Salary or Hourly" = 'Hourly' THEN "Hourly Rate" ELSE NULL END) AS media_salario_horista,
+AVG(CASE WHEN "Salary or Hourly" = 'Salary' THEN "Annual Salary" ELSE NULL END) AS media_salario_assalariado
+ FROM chicago
+)
+UPDATE chicago
+SET "Hourly Rate" = "Hourly Rate" * (SELECT media_salario_assalariado / media_salario_horista FROM medias WHERE "Salary or Hourly" = 'Hourly');
+
+-- 5) Verificar se as médias estão similares após a atualização
+SELECT
+  AVG(CASE WHEN "Salary or Hourly" = 'Hourly' THEN "Hourly Rate" ELSE NULL END) AS media_salario_horista_atualizada,
+  AVG(CASE WHEN "Salary or Hourly" = 'Salary' THEN "Annual Salary" ELSE NULL END) AS media_salario_assalariado_atualizada
+FROM chicago;

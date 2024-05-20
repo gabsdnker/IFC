@@ -1,0 +1,47 @@
+AV3-c
+
+Criar uma tabela multiversionada.
+
+Exemplo de tabela: Pessoa(cpf, nome, email, telefone)
+
+"v" é a versão
+inicia em 1, e a seguir as próximas versões são incrementas conforme modificações
+
+Estratégias possíveis:
+
+ESTRATÉGIA UM:
+--------------
+
+Usar tabela: Pessoa_versionada(cpf, nome, email, telefone, v)
+"v" é a versão
+inicia em 1, e a seguir as próximas versões são incrementas conforme modificações
+
+Criar visão: Pessoa (cpf, nome, email, telefone) order by v desc;
+
+Ao INSERIR um registro, verificar se o IDENTIFICADOR já existe (por exemplo, CPF; se já existir, adicionar novamente o registro usando (v+1), tal que v é a última versão existente do dado
+
+Ao MODIFICAR um registro, inserir novamente o registro novo com (v+1)
+
+Ao EXCLUIR um registro, apagar todas as ocorrências com o IDENTIFICADOR.
+
+ESTRATÉGIA DOIS:
+----------------
+
+Ao INSERIR um registro, verificar se o IDENTIFICADOR já existe (por exemplo, CPF; se já existir, "transfere" (remove de uma tabela, insere na outra tabela) o registro para outra tabela chamada, por exemplo, Pessoa_LOG, que pode possuir o mesmo formato da tabela Pessoa; a seguir, insere o novo registro
+
+Ao MODIFICAR um registro, "fazer uma cópia" do registro antigo para a tabela de log, antes de modificar o registro na tabela atual
+
+Ao EXCLUIR, "mover" o registro para a tabela de log.
+
+Outras estratégias são possíveis.
+---------------------------------
+
+Itens a serem observados:
+a) originalidade da resposta
+b) funcionamento da solução
+c) prints de tela demonstrando código, execução e ambiente (desktop cheio)
+
+Mencionar qual estratégia foi utilizada (1, 2 ou uma nova/personalizada).
+
+Prazo: 1 semana (entrega até 31/10/2023)
+Pode ser feito individualmente ou em dupla.

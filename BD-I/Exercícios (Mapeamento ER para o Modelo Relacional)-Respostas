@@ -1,0 +1,47 @@
+Nome: Gabrielli Danker 		Turma: BCC 2022.3                         
+Professor: Aldelir Fernando Luiz
+Matéria: Banco de Dados I		Data: 02/04/2023
+			
+
+				2ª Lista de Exercícios- Respostas
+
+1- Realizar o mapeamento E/R → relacional para cada um dos diagramas E/R ilustrados no que segue.
+
+a) Editoria(#codigo, nome)
+Livro(#isbn, edicao, titulo, #codigoEditoria)
+Exemplar(#codigo, data_aquisicao, #isbnLivro)
+Emprestimo(#codigo, #data, #codigoExemplar, #codigoCliente)
+Cliente(#codigo, nome, numerorg, rua, cep, bairro)
+Email(#codigo, #email)
+Autoria(#isbnLivro, #codigoAutor)
+Autor(#codigo, #email, nome)
+
+b)Categoria(#codigo, denominação)
+Produto(#codigo, tamanho, denominação, precounitario, #codigoCategoria)
+Venda(quantidade, valor_parcial,#codigoProduto, #codigoTransação)
+Transação(#codigo, data, #codigoLoja, #matriculaVendedor)
+Loja(#codigo, endereço, #codigoCidade)
+Vendedor(#matricula, nome)
+Cidade(#codigo, siglaUF)
+
+c) Cliente(#codigo, nome, numerorg)
+email(#email, #codigo)
+Animal(#codigo, nome, especie, raça, caraterísticas)
+Prestação(#data, #codigoCliente, #codigoAnimal)
+Serviço(#codigo, denominação, especiedst, valor)
+Funcionário(#matricula, nome, cpf, rg)
+telefone( #telefone, #matricula)
+Compra(#data, #codigoCliente)
+Endereço(#codigo, longadouro, numero, cidade, siglaUF)
+Fornecedor(#cnpq, nome, #email, #telefone)
+Fornecimento(#codigoFornecimento, #data, #cnpqFornecedor, #codigoProduto)
+Produto(#codigo, nome, marca, especiedst, preçocusto, preçovenda, quantidade)
+
+d)  Fabricante(#CNPJ, Nome, Endereço)
+     Produto(#codigo, nome, valor, #CNPJ_Fabricante)
+    Perfumaria(#codigo,tipo)
+    Item_perfumaria(#codigo, Imposto, Quantidade)
+    Medicamento(#codigo, Tarja, Formula)
+    Item_medicamento(#codigo, #codigo_produto, Imposto, Quantidade)
+   Receita(#CRM, data)
+    Venda(#Numero, #codigo_produto, Cliente, Data)

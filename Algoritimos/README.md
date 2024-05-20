@@ -34,7 +34,7 @@
 - ``Valor de entrada``
 - ``Bits paridade``
 - ``Aproximação do valor de pi``
-- ``Cifra de Cesar`
+- ``Cifra de Cesar``
 - ``Raiz quadrada``
 - ``Palíndromo``
 - ``Palíndromos com múltiplas palavras``

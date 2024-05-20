@@ -1,0 +1,28 @@
+Configurando o framework para programar em Python:
+-Criar uma pasta para o projeto;
+-Adicionar a pasta ao VSCode;
+-Criar o ambiente virtual de desenvolvimento para controlar as bibliotecas e as versões específicas que o projeto utilizará;
+
+-Criar pasta PROJECT
+mkdir PROJECT
+
+-Entrar na pasta PROJECT
+cd PROJECT
+
+-Abrir pasta no VScode
+. code (sem o "." no meu notebook)
+
+-Criar um arquivo "app.py"
+
+-No terminal:
+python -m venv .venv
+.\.venv\Scripts\activate
+
+-No venv:
+pip install flask
+pip list
+flask --version
+flask --app app run --debug
+
+-Criando banco de dados
+

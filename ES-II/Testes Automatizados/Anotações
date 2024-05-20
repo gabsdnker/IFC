@@ -1,0 +1,67 @@
+Atividade: Implentar uma calculadora com as seguintes funcionalidades: adição, subtração, multiplicação, divisão, exponenciação e raiz quadrada.
+           Especificar os casos de teste de unidade indicando:
+                - Estado Inicial
+                - Entradas de teste
+                - Condições de execução
+                - Saídas esperadas
+            Implementar os casos de testes:
+                - Linguagem livre (escolhi python)
+                - Entrega até o final da aula de 24/05
+
+Nome: Gabrielli Danker
+
+python test_calculadora.py
+
+Casos de Teste
+Adição
+
+    Estado Inicial: Calculadora instanciada.
+    Entradas de teste: (1, 2), (-1, -1), (0, 0).
+    Condições de execução: Chamar o método adicao com as entradas fornecidas.
+    Saídas esperadas: 3, -2, 0.
+
+Subtração
+
+    Estado Inicial: Calculadora instanciada.
+    Entradas de teste: (5, 3), (0, 0), (-1, -1).
+    Condições de execução: Chamar o método subtracao com as entradas fornecidas.
+    Saídas esperadas: 2, 0, 0.
+
+Multiplicação
+
+    Estado Inicial: Calculadora instanciada.
+    Entradas de teste: (2, 3), (-1, -1), (0, 5).
+    Condições de execução: Chamar o método multiplicacao com as entradas fornecidas.
+    Saídas esperadas: 6, 1, 0.
+
+Divisão
+
+    Estado Inicial: Calculadora instanciada.
+    Entradas de teste: (6, 3), (1, 0), (-4, 2).
+    Condições de execução: Chamar o método divisao com as entradas fornecidas.
+    Saídas esperadas: 2, ValueError, -2.
+
+Exponenciação
+
+    Estado Inicial: Calculadora instanciada.
+    Entradas de teste: (2, 3), (5, 0), (-1, 2).
+    Condições de execução: Chamar o método exponenciacao com as entradas fornecidas.
+    Saídas esperadas: 8, 1, 1.
+
+Raiz Quadrada
+
+    Estado Inicial: Calculadora instanciada.
+    Entradas de teste: (4), (0), (-1).
+    Condições de execução: Chamar o método raiz_quadrada com as entradas fornecidas.
+    Saídas esperadas: 2, 0, ValueError.
+
+Explicação Adicional
+
+Cada teste foi pensado para cobrir diferentes cenários e possíveis problemas:
+
+    Para adição, testamos números positivos, negativos e zero.
+    Para subtração, consideramos cenários comuns de subtração de números positivos, zero e negativos.
+    Para multiplicação, testamos multiplicação positiva, negativa e com zero.
+    Para divisão, cobrimos divisão por um número positivo, divisão por zero (que deve lançar uma exceção), e divisão de um número negativo.
+    Para exponenciação, testamos um número elevado a um expoente positivo, zero, e um número negativo.
+    Para raiz quadrada, testamos um número positivo, zero, e um número negativo (que deve lançar uma exceção).

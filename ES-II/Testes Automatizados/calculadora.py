@@ -1,5 +1,5 @@
 #Author: Gabrielli Danker 
-#Editado: 20/05/2024
+#Editado: 24/05/2024
 
 import math
 
@@ -15,7 +15,7 @@ class Calculadora:
     
     def divisao(self, a, b):
         if b == 0:
-            raise ValueError("Divisão por zero não é permitida")
+            raise ValueError("Divisão por zero não é permitida \n")
         return a / b
     
     def exponenciacao(self, a, b):
@@ -23,7 +23,7 @@ class Calculadora:
     
     def raiz_quadrada(self, a):
         if a < 0:
-            raise ValueError("Não é possível calcular a raiz quadrada de um número negativo")
+            raise ValueError("Não é possível calcular a raiz quadrada de um número negativo \n")
         return math.sqrt(a)
 
 def menu():
@@ -50,7 +50,7 @@ if __name__ == "__main__":
         
         if opcao in ('1', '2', '3', '4', '5', '6'):
             try:
-                num1 = float(input("Digite o primeiro número: "))
+                num1 = float(input("Digite um número: "))
                 if opcao != '6':
                     num2 = float(input("Digite o segundo número: "))
             except ValueError:
@@ -58,21 +58,21 @@ if __name__ == "__main__":
                 continue
             
             if opcao == '1':
-                print("Resultado:", calc.adicao(num1, num2))
+                print("Resultado:", calc.adicao(num1, num2), "\n")
             elif opcao == '2':
-                print("Resultado:", calc.subtracao(num1, num2))
+                print("Resultado:", calc.subtracao(num1, num2), "\n")
             elif opcao == '3':
-                print("Resultado:", calc.multiplicacao(num1, num2))
+                print("Resultado:", calc.multiplicacao(num1, num2), "\n")
             elif opcao == '4':
                 try:
-                    print("Resultado:", calc.divisao(num1, num2))
+                    print("Resultado:", calc.divisao(num1, num2), "\n")
                 except ValueError as e:
                     print(e)
             elif opcao == '5':
-                print("Resultado:", calc.exponenciacao(num1, num2))
+                print("Resultado:", calc.exponenciacao(num1, num2), "\n")
             elif opcao == '6':
                 try:
-                    print("Resultado:", calc.raiz_quadrada(num1))
+                    print("Resultado:", calc.raiz_quadrada(num1), "\n")
                 except ValueError as e:
                     print(e)
         else:

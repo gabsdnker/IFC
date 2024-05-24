@@ -16,37 +16,37 @@ Casos de Teste
 Adição
 
     Estado Inicial: Calculadora instanciada.
-    Entradas de teste: (1, 2), (-1, -1), (0, 0).
+    Entradas de teste: (1, 2), (-1, -1), (-1, 2), (0, 0)
     Condições de execução: Chamar o método adicao com as entradas fornecidas.
-    Saídas esperadas: 3, -2, 0.
+    Saídas esperadas: 3, -2, 1, 0
 
 Subtração
 
     Estado Inicial: Calculadora instanciada.
-    Entradas de teste: (5, 3), (0, 0), (-1, -1).
+    Entradas de teste: (5, 3), (0, 0), (-1, -1), (-1, 3)
     Condições de execução: Chamar o método subtracao com as entradas fornecidas.
-    Saídas esperadas: 2, 0, 0.
+    Saídas esperadas: 2, 0, 0, -4
 
 Multiplicação
 
     Estado Inicial: Calculadora instanciada.
-    Entradas de teste: (2, 3), (-1, -1), (0, 5).
+    Entradas de teste: (2, 3), (-1, -1),(-1, 5), (0, 5)
     Condições de execução: Chamar o método multiplicacao com as entradas fornecidas.
-    Saídas esperadas: 6, 1, 0.
+    Saídas esperadas: 6, 1, -5, 0
 
 Divisão
 
     Estado Inicial: Calculadora instanciada.
-    Entradas de teste: (6, 3), (1, 0), (-4, 2).
+    Entradas de teste: (6, 3), (1, 0), (-4, 2), (-4, -4)
     Condições de execução: Chamar o método divisao com as entradas fornecidas.
-    Saídas esperadas: 2, ValueError, -2.
+    Saídas esperadas: 2, ValueError, -2, 1
 
 Exponenciação
 
     Estado Inicial: Calculadora instanciada.
-    Entradas de teste: (2, 3), (5, 0), (-1, 2).
+    Entradas de teste: (2, 3), (5, 0), (-1, 2), (-1, -6)
     Condições de execução: Chamar o método exponenciacao com as entradas fornecidas.
-    Saídas esperadas: 8, 1, 1.
+    Saídas esperadas: 8, 1, 1, 1
 
 Raiz Quadrada
 
@@ -59,8 +59,8 @@ Explicação Adicional
 
 Cada teste foi pensado para cobrir diferentes cenários e possíveis problemas:
 
-    Para adição, testamos números positivos, negativos e zero.
-    Para subtração, consideramos cenários comuns de subtração de números positivos, zero e negativos.
+    Para adição, testamos números positivos, negativos, zero e com apenas um dos números negativos.
+    Para subtração, consideramos cenários comuns de subtração de números positivos, zero, negativos e apenas um número negativo.
     Para multiplicação, testamos multiplicação positiva, negativa e com zero.
     Para divisão, cobrimos divisão por um número positivo, divisão por zero (que deve lançar uma exceção), e divisão de um número negativo.
     Para exponenciação, testamos um número elevado a um expoente positivo, zero, e um número negativo.

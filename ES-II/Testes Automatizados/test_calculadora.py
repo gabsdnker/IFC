@@ -1,5 +1,5 @@
 #Author: Gabrielli Danker 
-#Editado: 20/05/2024
+#Editado: 24/05/2024
 
 import math
 import unittest
@@ -16,7 +16,7 @@ class Calculadora:
     
     def divisao(self, a, b):
         if b == 0:
-            raise ValueError("Divisão por zero não é permitida")
+            raise ValueError("Divisão por zero não é permitida \n")
         return a / b
     
     def exponenciacao(self, a, b):
@@ -24,19 +24,18 @@ class Calculadora:
     
     def raiz_quadrada(self, a):
         if a < 0:
-            raise ValueError("Não é possível calcular a raiz quadrada de um número negativo")
+            raise ValueError("Não é possível calcular a raiz quadrada de um número negativo \n")
         return math.sqrt(a)
 
 class TestCalculadora(unittest.TestCase):
     def setUp(self):
         # Estado Inicial: Calculadora instanciada.
         self.calc = Calculadora()
-
     def test_adicao(self):
         # Entradas de teste: (1, 2), (-1, -1), (0, 0)
         # Condições de execução: Chamar o método adicao com as entradas fornecidas
         # Saídas esperadas: 3, -2, 0
-        print("Teste de Adição")
+        print("\nTeste de Adição")
         resultado = self.calc.adicao(1, 2)
         print(f"1 + 2 = {resultado}")
         self.assertEqual(resultado, 3)
@@ -47,13 +46,13 @@ class TestCalculadora(unittest.TestCase):
         
         resultado = self.calc.adicao(0, 0)
         print(f"0 + 0 = {resultado}")
-        self.assertEqual(resultado, 0)
-    
+        self.assertEqual(resultado, 0)   
+        
     def test_subtracao(self):
         # Entradas de teste: (5, 3), (0, 0), (-1, -1)
         # Condições de execução: Chamar o método subtracao com as entradas fornecidas
         # Saídas esperadas: 2, 0, 0
-        print("Teste de Subtração")
+        print("\nTeste de Subtração")
         resultado = self.calc.subtracao(5, 3)
         print(f"5 - 3 = {resultado}")
         self.assertEqual(resultado, 2)
@@ -70,7 +69,7 @@ class TestCalculadora(unittest.TestCase):
         # Entradas de teste: (2, 3), (-1, -1), (0, 5)
         # Condições de execução: Chamar o método multiplicacao com as entradas fornecidas
         # Saídas esperadas: 6, 1, 0
-        print("Teste de Multiplicação")
+        print("\nTeste de Multiplicação")
         resultado = self.calc.multiplicacao(2, 3)
         print(f"2 * 3 = {resultado}")
         self.assertEqual(resultado, 6)
@@ -87,7 +86,7 @@ class TestCalculadora(unittest.TestCase):
         # Entradas de teste: (6, 3), (1, 0), (-4, 2)
         # Condições de execução: Chamar o método divisao com as entradas fornecidas
         # Saídas esperadas: 2, ValueError, -2
-        print("Teste de Divisão")
+        print("\nTeste de Divisão")
         resultado = self.calc.divisao(6, 3)
         print(f"6 / 3 = {resultado}")
         self.assertEqual(resultado, 2)
@@ -104,7 +103,7 @@ class TestCalculadora(unittest.TestCase):
         # Entradas de teste: (2, 3), (5, 0), (-1, 2)
         # Condições de execução: Chamar o método exponenciacao com as entradas fornecidas
         # Saídas esperadas: 8, 1, 1
-        print("Teste de Exponenciação")
+        print("\nTeste de Exponenciação")
         resultado = self.calc.exponenciacao(2, 3)
         print(f"2 ^ 3 = {resultado}")
         self.assertEqual(resultado, 8)
@@ -121,7 +120,7 @@ class TestCalculadora(unittest.TestCase):
         # Entradas de teste: (4), (0), (-1)
         # Condições de execução: Chamar o método raiz_quadrada com as entradas fornecidas
         # Saídas esperadas: 2, 0, ValueError
-        print("Teste de Raiz Quadrada")
+        print("\nTeste de Raiz Quadrada")
         resultado = self.calc.raiz_quadrada(4)
         print(f"sqrt(4) = {resultado}")
         self.assertEqual(resultado, 2)

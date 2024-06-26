@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/conta.css">
+
+    <title>
+        Goal Tickets - Conta
+    </title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header-inner-content">
+            <a href="/"><h1 class="logo">GOAL<span>TICKETS</span></h1></a>
+            <nav>
+                <ul>
+                    <a href="/"><li>Home</li></a>
+                    <a href="/Rodada1"><li>Jogos</li></a>
+                    <a href="/Ajuda"><li>Ajuda</li></a>
+                    <a href="/Login"><li id="conta">Conta</li></a>
+                    <a href="/Perfil"><li class="menu-especial" id="perfil">Perfil</li></a>
+                </ul>
+            </nav>
+            <div class="nav-icon-content">
+                <a href="/Login"><img src="../static/midias/Perfil.png" alt="icone de perfil" class="perfil-button"></a>
+                <img src="../static/midias/Menu.png" alt="icone menu de opções" class="menu-button">
+            </div>
+        </div>
+    </div>
+    <div class="gray-background">
+        <h3 id="conta_criada" class="conta_criada">Conta criada com sucesso!</h3>
+        <div class="white-background">
+            <div class="image-div">
+                <img src="../static/midias/Logo-2.png" alt="Logo da Goal Tickets" class="logo-2">
+            </div>
+
+            <div class="form-div">
+                <form action="/login" method="post" class="form">
+                    <h2 class="form-title">Conecte-se</h2>
+                    <input type="email" name="email" class="form-input email-input" id="email" placeholder="E-mail">
+                    <input type="password" name="senha" class="form-input password-input" id="senha" placeholder="Senha">
+                    <h3 id="email_invalido" class="email_invalido">E-mail não cadastrado!</h3>
+                    <h3 id="senha_invalida" class="senha_invalida">Senha inválida!</h3>
+                    <button class="form-button button-1" type="submit">Entrar na minha conta</button>
+                </form>
+                <a href="/SignUp" class="div-nova-conta"><button class="form-button button-2">Criar nova conta</button></a>
+                <a href="/EsqueceuSenha" class="h3-a"><h3 class="h3-password">Esqueci minha senha</h3></a>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="info-contato">
+            <h3 class="h3-footer">Contato</h3>
+            <p class="p-footer">Endereço: Rua 7 de Setembro, N° 1314 <br> Centro, Blumenau - SC, 89010-202</p>
+            <p class="p-footer">Telefone: (47) 3332-4596</p>
+            <p>Email: contato@goaltickets.com.br</p>
+        </div>
+        <div class="logo-footer">
+            <img src="../static/midias/Logo-2.png" alt="Logo da Goal Tickets">
+        </div>
+        <div class="politicas">
+            <h3 class="h3-footer">Políticas de Copyright</h3>
+            <p class="p-footer">&copy; 2024 Goal Tickets. Todos os direitos reservados.</p>
+            <p>Termos de Uso | Política de Privacidade</p>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button");
+
+        menuButton.addEventListener("click", () => {
+        navbar.classList.toggle("show-menu");
+        });
+
+        var aviso_email = document.getElementById("email_invalido");
+        var email_digitado = "{{ email_digitado }}";
+
+        if (email_digitado === "Invalido") {
+            aviso_email.style.display = "block";
+
+        } else if (email_digitado === "Correto") {
+            aviso_email.style.display = "none";
+        }
+
+        window.addEventListener('beforeunload', function() {
+            aviso_email.style.display = "none";
+        });
+
+        var aviso_senha = document.getElementById("senha_invalida");
+        var senha_digitada = "{{ senha_digitada }}";
+
+        if (senha_digitada === "Invalida") {
+            aviso_senha.style.display = "block";
+        } else if (senha_digitada === "Correta") {
+            aviso_senha.style.display = "none";
+        }
+    </script>
+</body>
+</html>

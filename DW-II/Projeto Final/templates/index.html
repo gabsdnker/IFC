@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/index.css">
+    
+    <title>
+        Goal Tickets
+    </title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header-inner-content">
+            <a href="/"><h1 class="logo">GOAL<span>TICKETS</span></h1></a>
+            <nav>
+                <ul>
+                    <a href="/"><li>Home</li></a>
+                    <a href="/Rodada1"><li>Jogos</li></a>
+                    <a href="/Ajuda"><li>Ajuda</li></a>
+                    <a href="/Login"><li id="conta">Conta</li></a>
+                    <a href="/Perfil"><li class="menu-especial" id="perfil">Perfil</li></a>
+                    <button class="logout" id="logout">Sair</button>
+                </ul>
+            </nav>
+            <div class="nav-icon-content">
+                <h3 id="usuario" class="usuario"></h3>
+                <a href="/Login" id="perfil-button"><img src="../static/midias/Perfil.png" alt="icone de perfil" class="perfil-button"></a>
+                <img src="../static/midias/Menu.png" alt="icone menu de opções" class="menu-button">
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="header-inner-content">
+            <div class="header-bottom-side">
+                <div class="header-bottom-side-left">
+                    <h2>Viva a emoção dos grandes duelos da Série A do Brasileirão</h2>
+                    <p>
+                        Adquira seus ingressos para os jogos mais emocionantes da Série A do Brasileirão e viva a paixão do futebol brasileiro. 
+                        Garanta seu lugar nas arquibancadas e torça pelo seu time favorito. 
+                        Não perca essa oportunidade única de participar desse campeonato incrível!
+                    </p>
+                    <a href="/Rodada1"><button>Compre agora</button></a>
+                </div>
+                <div class="header-bottom-side-right">
+                    <img src="../static/midias/Brasileirao2024.jpg" alt="Foto com os 20 times do Brasileirão Série A de 2024">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="white-background">
+            <div class="page-inner-content">
+                <div class="page-title">
+                    <h3 class="title">destaques da rodada:</h3>
+                </div>
+                <div class="cols cols-3">
+                    <div class="derby destaques">
+                        <img src="../static/midias/Jogos/Atlético-MG X Cruzeiro.png" alt="Atlético-MG x Cruzeiro">
+                        <h4>Atlético-MG x Cruzeiro</h4>
+                        <a href="/Rodada3-Jogo4"><button>Visualizar »</button></a>
+                    </div>
+                    <div class="milhoes destaques">
+                        <img src="../static/midias/Jogos/Fluminense X Vasco.png" alt="Fluminense x Vasco">
+                        <h4>Fluminense x Vasco</h4>
+                        <a href="/Rodada3-Jogo1"><button>Visualizar »</button></a>
+                    </div>
+                    <div class="grenal destaques">
+                        <img src="../static/midias/Jogos/Vitória X Bahia.png" alt="Vitória x Bahia">
+                        <h4>Vitória x Bahia</h4>
+                        <a href="/Rodada3-Jogo5"><button>Visualizar »</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <div class="info-contato">
+            <h3 class="h3-footer">Contato</h3>
+            <p class="p-footer">Endereço: Rua 7 de Setembro, N° 1314 <br> Centro, Blumenau - SC, 89010-202</p>
+            <p class="p-footer">Telefone: (47) 3332-4596</p>
+            <p>Email: contato@goaltickets.com.br</p>
+        </div>
+        <div class="logo-footer">
+            <img src="../static/midias/Logo-2.png" alt="Logo da Goal Tickets">
+        </div>
+        <div class="politicas">
+            <h3 class="h3-footer">Políticas de Copyright</h3>
+            <p class="p-footer">&copy; 2024 Goal Tickets. Todos os direitos reservados.</p>
+            <p>Termos de Uso | Política de Privacidade</p>
+        </div>
+    </footer>
+    <script>
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button");
+
+        menuButton.addEventListener("click", () => {
+        navbar.classList.toggle("show-menu");
+        });
+
+        var status = "{{ status }}"
+        var nome = "{{ nome_perfil }}";
+        var conta = document.getElementById("conta");
+        var perfil = document.getElementById("perfil");
+        var logout = document.getElementById("logout")
+        const usuario = document.getElementById('usuario');
+        
+        if (status === "Logado") {
+            conta.style.display = "none";
+            perfil.style.display = "block";
+            logout.style.display = "block";
+            usuario.innerText = nome;
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var perfilLink = document.getElementById('perfil-button');
+                perfilLink.href = '/Perfil';
+            });
+        } 
+
+        if (status === "deslogado") {
+            conta.style.display = "block";
+            perfil.style.display = "none";
+            logout.style.display = "none";
+            usuario.innerText = "";
+        }
+
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = '/logout';
+        });
+
+    </script>
+</body>
+</html>

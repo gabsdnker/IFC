@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/ajuda.css">
+    
+
+    <title>
+        Goal Tickets - Ajuda
+    </title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header-inner-content">
+            <a href="/"><h1 class="logo">GOAL<span>TICKETS</span></h1></a>
+            <nav>
+                <ul>
+                    <a href="/"><li>Home</li></a>
+                    <a href="/Rodada1"><li>Jogos</li></a>
+                    <a href="/Ajuda"><li>Ajuda</li></a>
+                    <a href="/Login"><li id="conta">Conta</li></a>
+                    <a href="/Perfil"><li class="menu-especial" id="perfil">Perfil</li></a>
+                    <button class="logout" id="logout">Sair</button>
+                </ul>
+            </nav>
+            <div class="nav-icon-content">
+                <h3 id="usuario" class="usuario"></h3>
+                <a href="/Login" id="perfil-button"><img src="../static/midias/Perfil.png" alt="icone de perfil" class="perfil-button"></a>
+                <img src="../static/midias/Menu.png" alt="icone menu de opções" class="menu-button">
+            </div>
+        </div>
+    </div>
+    <div class="gray-background">
+        <div class="white-background">
+            <div class="help-title">
+                <h2>Ajuda Goal Tickets</h2>
+            </div>
+            <div class="help-menu">
+                <div class="help-menu-left help-menu-conteiner">
+                    <div class="help help-left">
+                        <h3>Como Comprar</h3>
+                        <div class="topics">
+                            <h4 class="topics-title" onclick="toggleParagraph1('payment-info-1')"><span class="topics-button">▶</span>Ainda não sou cliente, como faço para comprar?</h4>
+                            <p class="help-p" id="payment-info-1">
+                                Faça o seu cadastro, utilizando a o seguinte link, <a href="../templates/Conta.html">clique aqui</a>.
+                            </p>
+                        </div>
+                        <div class="topics">
+                            <h4 class="topics-title" onclick="toggleParagraph2('payment-info-2')"><span class="topics-button">▶</span>Não tenho CPF ou RG, como faço para realizar a compra?</h4>
+                            <p class="help-p" id="payment-info-2">
+                                Por segurança, estes documentos são indispensáveis para efetuar compras no site da <span>Goal Tickets</span>.
+                                Caso você não os tenha, solicite que outra pessoa que possua estes documentos cadastre-se e 
+                                realize a compra para você.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="help help-left">
+                        <h3>Pagamento</h3>
+                        <div class="topics">
+                            <h4 class="topics-title" onclick="toggleParagraph3('payment-info-3')"><span class="topics-button">▶</span>Quais as formas de pagamento disponíveis?</h4>
+                            <p class="help-p" id="payment-info-3">
+                                Atualmente, os pagamentos podem ser realizados por meio de cartão de crédito. Estamos empenhados 
+                                em proporcionar uma experiência de compra conveniente e segura para todos os nossos clientes.
+                            </p>
+                        </div>
+                        <div class="topics">
+                            <h4 class="topics-title" onclick="toggleParagraph4('payment-info-4')"><span class="topics-button">▶</span>Como funciona a compra por Cartão de Crédito?</h4>
+                            <p class="help-p" id="payment-info-4">
+                                Nossa tecnologia assegura que os dados do seu cartão de crédito sejam enviados diretamente 
+                                para a operadora, garantindo segurança e sigilo durante a compra. A autorização de pagamento 
+                                é feita online após a compra, podendo levar alguns minutos para ser confirmada. Se necessário, 
+                                podemos confirmar dados por telefone ou e-mail para evitar fraudes e garantir sua segurança.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="help help-left">
+                        <h3>Cancelamento</h3>
+                        <div class="topics">
+                            <h4 class="topics-title" onclick="toggleParagraph5('payment-info-5')"><span class="topics-button">▶</span>Posso cancelar a minha compra?</h4>
+                            <p class="help-p" id="payment-info-5">
+                                Após o prazo de 7 dias do pedido e até 8 horas úteis antes do evento, não é possível cancelar a 
+                                compra conforme o Código de Defesa do Consumidor. O estorno do valor pago pelo ingresso depende 
+                                do método de pagamento:
+                                <br>
+                                <br>
+                                <span>Cartão de Crédito:</span> O estorno é feito diretamente na operadora do cartão e será creditado na próxima fatura. A Central de Atendimento fornecerá um protocolo de cancelamento.
+                                <br>
+                                <br>
+                                <span>Boleto Bancário:</span> O reembolso é feito por depósito, sendo necessário informar o número do pedido, CPF e dados bancários do titular da compra.
+                                <br>
+                                <br>
+                                <span>Não são realizados cancelamentos ou devoluções após o evento.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="help-menu-right help-menu-conteiner">
+                    <div class="help help-right">
+                        <h3>Ingressos</h3>
+                        <div class="topics">
+                            <h4 class="topics-title" onclick="toggleParagraph6('payment-info-6')"><span class="topics-button">▶</span>O que devo apresentar para comprovar a meia-entrada?</h4>
+                            <p class="help-p" id="payment-info-6">
+                                <span>Estudantes:</span>
+                                A partir de 1 de dezembro de 2015, novas regras e um novo documento de identificação estudantil (CIE) emitido pela UBES, 
+                                UNES, ANPG e entidades filiadas estão em vigor. A partir de 31 de março de 2016, apenas este documento será aceito como 
+                                comprovante para benefícios de estudante, sendo obrigatória sua apresentação na entrada de eventos. Para solicitar o 
+                                documento, <a href="https://www.documentodoestudante.com.br/" target="_blank">clique aqui</a>.
+                                <br>
+                                <br>
+                                <span>Idosos:</span>
+                                Idosos com idade igual ou superior a 60 anos. Basta apresentar um documento de identidade com foto. 
+                                Este direito é assegurado por uma lei federal que não contempla aposentados com menos de 60 anos.
+                                <br>
+                                <br>
+                                <span>Pessoas com deficiência:</span>
+                                Possuem o direito da meia entrada estendido a um acompanhante. Devem apresentar o cartão de benefícios de 
+                                prestação continuada de assistência social a pessoa com deficiência ou documento emitido pelo INSS, 
+                                que ateste a aposentadoria, de acordo com a lei complementar 142, de maio de 2013.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="help help-right">
+                        <h3>Acompanhe seu pedido</h3>
+                        <div class="topics">
+                            <h4 class="topics-title" onclick="toggleParagraph7('payment-info-7')"><span class="topics-button">▶</span>Como faço para acompanhar o meu pedido?</h4>
+                            <p class="help-p" id="payment-info-7">
+                                Para acompanhar o status do seu pedido após a realização da sua compra, acesse a seção <a href="#">meus pedidos</a> do nosso site.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="help help-right">
+                        <h3>Geral</h3>
+                        <div class="topics">
+                            <h4 class="topics-title" onclick="toggleParagraph8('payment-info-8')"><span class="topics-button">▶</span>O que é a taxa de conveniência?</h4>
+                            <p class="help-p" id="payment-info-8">
+                                A <span>Goal Tickets</span> é uma empresa de serviços que conecta as pessoas a experiências ao vivo. Atuamos como intermediários na venda de ingressos entre o Organizador do Evento e o público. 
+                                Recebemos a taxa de conveniência como nossa remuneração, repassando integralmente o valor dos ingressos ao Organizador. Isso garante uma infraestrutura melhor para compra rápida e segura, 
+                                seja online ou em nossos pontos de venda. Nossos serviços complementam os pontos de venda dos organizadores, onde não há cobrança de taxa de conveniência.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="info-contato">
+            <h3 class="h3-footer">Contato</h3>
+            <p class="p-footer">Endereço: Rua 7 de Setembro, N° 1314 <br> Centro, Blumenau - SC, 89010-202</p>
+            <p class="p-footer">Telefone: (47) 3332-4596</p>
+            <p>Email: contato@goaltickets.com.br</p>
+        </div>
+        <div class="logo-footer">
+            <img src="../static/midias/Logo-2.png" alt="Logo da Goal Tickets">
+        </div>
+        <div class="politicas">
+            <h3 class="h3-footer">Políticas de Copyright</h3>
+            <p class="p-footer">&copy; 2024 Goal Tickets. Todos os direitos reservados.</p>
+            <p>Termos de Uso | Política de Privacidade</p>
+        </div>
+    </footer>
+    <script>
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button");
+
+        menuButton.addEventListener("click", () => {
+        navbar.classList.toggle("show-menu");
+        });
+
+
+        function toggleParagraph1() {
+            var paragraph = document.getElementById("payment-info-1");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+
+        function toggleParagraph2() {
+            var paragraph = document.getElementById("payment-info-2");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+
+        function toggleParagraph3() {
+            var paragraph = document.getElementById("payment-info-3");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+
+        function toggleParagraph4() {
+            var paragraph = document.getElementById("payment-info-4");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+
+        function toggleParagraph5() {
+            var paragraph = document.getElementById("payment-info-5");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+
+        function toggleParagraph6() {
+            var paragraph = document.getElementById("payment-info-6");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+
+        function toggleParagraph7() {
+            var paragraph = document.getElementById("payment-info-7");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+
+        function toggleParagraph8() {
+            var paragraph = document.getElementById("payment-info-8");
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+            } else {
+                paragraph.style.display = "none";
+            }
+        }
+
+        var status = "{{ status }}"
+        var nome = "{{ nome_perfil }}";
+        var conta = document.getElementById("conta");
+        var perfil = document.getElementById("perfil");
+        var logout = document.getElementById("logout")
+        const usuario = document.getElementById('usuario');
+        
+        if (status === "Logado") {
+            conta.style.display = "none";
+            perfil.style.display = "block";
+            logout.style.display = "block";
+            usuario.innerText = nome;
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var perfilLink = document.getElementById('perfil-button');
+                perfilLink.href = '/Perfil';
+            });
+        } 
+
+        if (status === "deslogado") {
+            conta.style.display = "block";
+            perfil.style.display = "none";
+            logout.style.display = "none";
+            usuario.innerText = "";
+        }
+
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = '/logout';
+        });
+    </script>
+</body>
+</html>

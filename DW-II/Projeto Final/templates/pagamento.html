@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/pagamento.css">
+    <title>
+        Goal Tickets - Pagamento
+    </title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header-inner-content">
+            <a href="/"><h1 class="logo">GOAL<span>TICKETS</span></h1></a>
+            <nav>
+                <ul>
+                    <a href="/"><li>Home</li></a>
+                    <a href="/Rodada1"><li>Jogos</li></a>
+                    <a href="/Ajuda"><li>Ajuda</li></a>
+                    <a href="/Login"><li id="conta">Conta</li></a>
+                    <a href="/Perfil"><li class="menu-especial" id="perfil">Perfil</li></a>
+                    <button class="logout" id="logout">Sair</button>
+                </ul>
+            </nav>
+            <div class="nav-icon-content">
+                <h3 id="usuario" class="usuario"></h3>
+                <a href="/Login" id="perfil-button"><img src="../static/midias/Perfil.png" alt="icone de perfil" class="perfil-button"></a>
+                <img src="../static/midias/Menu.png" alt="icone menu de opções" class="menu-button">
+            </div>
+        </div>
+    </div>
+
+
+    <main>
+        <div class="div-central">
+            <div class="div-titulo">
+                <h2 class="titulo-1">Pagamento</h2>
+                <h2 class="titulo-2">Conclusão</h2>
+            </div>
+            <div class="div-principal">
+                <div class="div-direita">
+                    <form class="form-pagamento-cartao">
+                        <div class="pagamento-1">
+                            <div class="input-1">
+                                <label for="num_cartao" class="titulo_num">Número do cartão</label>
+                                <input type="text" placeholder="Preencha idêntico ao cartão" id="num_cartao" class="num_cartao input-pagamento">
+                            </div>
+                            <div class="input-2">
+                                <label for="nome_cartao" class="titulo_nome">Nome do titular</label>
+                                <input type="text" placeholder="Preencha idêntico ao cartão" id="nome_cartao" class="nome_cartao input-pagamento">
+                            </div>
+                        </div>
+                        <div class="pagamento-2">
+                            <div class="input-3">
+                                <label for="validade_cartao">Validade</label>
+                                <input type="text" placeholder="mm / aa" id="validade_cartao" class="validade_cartao input-pagamento">
+                            </div>
+                            <div class="input-4">
+                                <label for="cvc_cartão">Cód. de Segurança</label>
+                                <input type="text" placeholder="CVC" id="cvc_cartão" class="cvc_cartão input-pagamento">
+                            </div>
+                        </div>
+                        <div class="div-botoes">
+                            <button class="botao-1">Voltar</button>
+                            <button class="botao-2">Pagar</button>
+                        </div>
+                    </form>
+                </div>
+                <!--
+                <div class="div-esquerda">
+                    <img src="../static/midias/Jogos/Fluminense X Vasco.png" alt="Fluminense X Vasco">
+                    <h2>Fluminense X Vasco</h2>
+                    <h2>20/04 • Sábado • 16:00</h2>
+                    <h2>Maracanã - Rio de Janeiro - RJ</h2>
+                    <h2>Arquibancada Setor Norte</h2>
+                    <h2>R$ 150,00</h2>
+                </div>
+                -->
+            </div>
+        </div>
+    </main>
+
+
+    <footer id="footer">
+        <div class="info-contato">
+            <h3 class="h3-footer">Contato</h3>
+            <p class="p-footer">Endereço: Rua 7 de Setembro, N° 1314 <br> Centro, Blumenau - SC, 89010-202</p>
+            <p class="p-footer">Telefone: (47) 3332-4596</p>
+            <p>Email: contato@goaltickets.com.br</p>
+        </div>
+        <div class="logo-footer">
+            <img src="../static/midias/Logo-2.png" alt="Logo da Goal Tickets">
+        </div>
+        <div class="politicas">
+            <h3 class="h3-footer">Políticas de Copyright</h3>
+            <p class="p-footer">&copy; 2024 Goal Tickets. Todos os direitos reservados.</p>
+            <p>Termos de Uso | Política de Privacidade</p>
+        </div>
+    </footer>
+    <script>
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button");
+
+        menuButton.addEventListener("click", () => {
+        navbar.classList.toggle("show-menu");
+        });
+
+        var status = "{{ status }}"
+        var nome = "{{ nome_perfil }}";
+        var conta = document.getElementById("conta");
+        var perfil = document.getElementById("perfil");
+        var logout = document.getElementById("logout")
+        const usuario = document.getElementById('usuario');
+        
+        if (status === "Logado") {
+            conta.style.display = "none";
+            perfil.style.display = "block";
+            logout.style.display = "block";
+            usuario.innerText = nome;
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var perfilLink = document.getElementById('perfil-button');
+                perfilLink.href = '/Perfil';
+            });
+        } 
+
+        if (status === "deslogado") {
+            conta.style.display = "block";
+            perfil.style.display = "none";
+            logout.style.display = "none";
+            usuario.innerText = "";
+        }
+
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = '/logout';
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var previousPageData = localStorage.getItem("data");
+            var dataElement = document.getElementById("data");
+            if (previousPageData) {
+                dataElement.textContent = "Dados da página anterior: " + previousPageData;
+            }
+        });
+
+    </script>
+</body>
+</html>

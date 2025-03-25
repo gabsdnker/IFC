@@ -23,4 +23,8 @@
 ### 5° Semestre (Fev/2024)
   - DW-II (Desenvolvimento Web II)
   - ES-II (Engenharia de Software II)
-  
+
+  ### 7° Semestre (Fev/2025)
+  - PAP (Padrões de Projetos)
+  - IA (Inteligência Artificial)
+  - SE (Sistemas Embarcados)

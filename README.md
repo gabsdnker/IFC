@@ -1,6 +1,7 @@
 # IFC (Instituto Federal Catarinense) 
 
 ## Bacarelado em Ciência da Computação
+Obs:. Apenas matérias de programação
 
 ### 1° Semestre (Mar/2022)
   - DW-I (Desenvolvimento Web I)

@@ -5,54 +5,47 @@ import Servico.SugeridorInteligente;
 
 import java.util.Scanner;
 
-public class Main{
-    public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
-
+public class Principal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         ControladorDeTarefas controlador = new ControladorDeTarefas();
         SugeridorInteligente ia = new SugeridorInteligente();
 
-        System.out.println("Bem-vindo a Assistente de Estudos!");
-        
-        //Adicionar tarefas
-        System.out.println("Quantas tarefas você que adicionar?");
+        System.out.println("Bem-vindo ao Assistente de Estudos!");
 
-        int quantidade = input.nextInt();
-        input.nextLine();
+        // Adiciona tarefas simples
+        System.out.print("Quantas tarefas você deseja adicionar? ");
+        int quantidade = scanner.nextInt();
+        scanner.nextLine(); // Limpa o buffer
 
-        for(int i = 0; i < quantidade; i++){
-            System.out.println("Digite o título da tarefa " + (i + 1) + ": ");
-            String titulo = input.nextLine();
+        for (int i = 0; i < quantidade; i++) {
+            System.out.print("Digite o título da tarefa " + (i + 1) + ": ");
+            String titulo = scanner.nextLine();
             controlador.criarTarefa(titulo);
         }
 
-        //Criar projetos
-        System.out.println("\nDigite o nome do projeto você quer criar: ");
-        String nomeProjeto = input.nextLine();
+        // Cria um projeto com tarefas
+        System.out.print("\nDigite o nome do seu projeto de estudos (ex: TCC): ");
+        String nomeProjeto = scanner.nextLine();
+
         Projeto projeto = new Projeto(nomeProjeto);
 
-        System.out.println("Quantas tarefas você deseja adicionar ou projeto?");
-        int tarefasProjeto = input.nextInt();
-        input.nextLine();
+        System.out.print("Quantas tarefas deseja adicionar ao projeto? ");
+        int tarefasProjeto = scanner.nextInt();
+        scanner.nextLine();
 
-        for( int i = 0; i < tarefasProjeto; i++){
-            System.out.println("Tarefa " + (i + 1) + ": ");
-            String titulo = input.nextLine();
+        for (int i = 0; i < tarefasProjeto; i++) {
+            System.out.print("Tarefa " + (i + 1) + ": ");
+            String titulo = scanner.nextLine();
             projeto.adicionarTarefa(new Tarefa(titulo));
         }
 
-        System.out.println("\nTarefas adicionadas:");
-        for(Tarefa t : GerenciadorDeTarefas.getInstancia().getTarefas()){
-            System.out.println("- " + t.getTitulo());
-        }
+        System.out.println("\nResumo do Projeto:");
+        projeto.exibir();
 
-        System.out.println("\nProjeto: " + projeto.getTitulo());
-        for (Tarefa t : projeto.getTarefas()){
-            System.out.println("- " + t.getTitulo());
-        }
-
+        // IA simulada
         System.out.println("\nSugestão Inteligente: " + ia.sugerirTarefa());
 
-
+        scanner.close();
     }
 }

@@ -40,7 +40,7 @@ public class Principal {
             projeto.adicionarTarefa(new Tarefa(titulo));
         }
         //Adicionado
-        System.out.println("\nResumo das Tarefas:);
+        System.out.println("\nResumo das Tarefas: ");
         controlador.criarTarefa(titulo);
 
         System.out.println("\nResumo do Projeto:");

@@ -18,9 +18,8 @@ public class GerenciadorDeTarefas{
     }
     public void adicionar(Tarefa tarefa){
          tarefas.add(tarefa);
-         System.out.println("Tarefa adicionada: " + tarefa.getTitulo());
     }
-
+    System.out.println("Tarefa adicionada: " + tarefa.getTitulo());
     public List<Tarefa> getTarefas(){
         return tarefas;
     }

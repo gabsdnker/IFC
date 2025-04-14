@@ -25,7 +25,7 @@ public class Principal {
         }
 
         // Cria um projeto com tarefas
-        System.out.print("\nDigite o nome do seu projeto de estudos (ex: TCC): ");
+        System.out.print("\nDigite o nome do seu projeto de estudos: ");
         String nomeProjeto = scanner.nextLine();
 
         Projeto projeto = new Projeto(nomeProjeto);
@@ -39,6 +39,9 @@ public class Principal {
             String titulo = scanner.nextLine();
             projeto.adicionarTarefa(new Tarefa(titulo));
         }
+        //Adicionado
+        System.out.println("\nResumo das Tarefas:);
+        controlador.criarTarefa(titulo);
 
         System.out.println("\nResumo do Projeto:");
         projeto.exibir();

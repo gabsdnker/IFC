@@ -1,3 +1,4 @@
+//Padrão de Projeto Singleton
 package Controle;
 
 import Modelo.Tarefa;

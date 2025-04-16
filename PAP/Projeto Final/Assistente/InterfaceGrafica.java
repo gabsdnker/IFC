@@ -35,7 +35,7 @@ public class InterfaceGrafica extends JFrame{
         JButton botaoAdicionarProjeto = new JButton("Adicionar Projeto");
         botaoAdicionarProjeto.addActionListener(e -> adicionarProjeto());
 
-        painelEntrada.add(new JLabel("Tarefa:"));
+        painelEntrada.add(new JLabel("Título:"));
         painelEntrada.add(campoTarefa);
         painelEntrada.add(botaoAdicionarTarefa);
         painelEntrada.add(botaoAdicionarProjeto);
@@ -63,7 +63,7 @@ public class InterfaceGrafica extends JFrame{
         add(botaoSugestao, BorderLayout.SOUTH);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
+        setSize(600, 700); //Tamanho da janela
         setLocationRelativeTo(null); //Centralizar janela
         setVisible(true);
     }

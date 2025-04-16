@@ -1,3 +1,4 @@
+// Padrão GRASP Strategy
 package Servico;
 
 public class SugeridorInteligente {

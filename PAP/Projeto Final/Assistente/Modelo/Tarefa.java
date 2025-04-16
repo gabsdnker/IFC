@@ -1,3 +1,4 @@
+//Padrão Arquitetural MVC (Model)
 package Modelo;
 
 public class Tarefa{

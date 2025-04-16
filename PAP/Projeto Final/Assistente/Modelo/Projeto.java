@@ -1,3 +1,4 @@
+//Padrão Arquitetural MVC (Model)
 package Modelo;
 
 import java.util.ArrayList;

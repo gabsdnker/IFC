@@ -1,3 +1,4 @@
+//Padrão Arquitetural MVC (View)
 import Controle.ControladorDeTarefas;
 import Controle.GerenciadorDeTarefas;
 import Modelo.Projeto;

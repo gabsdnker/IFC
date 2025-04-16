@@ -1,17 +1,17 @@
 package Servico;
 
-import java.time.LocalTime;
+public class SugeridorInteligente {
+    private EstrategiaSugestao estrategia;
 
-public class SugeridorInteligente{
-    public String sugerirTarefa(){
-        LocalTime agora = LocalTime.now();
+    public SugeridorInteligente(EstrategiaSugestao estrategia) {
+        this.estrategia = estrategia;
+    }
 
-        if(agora.isBefore(LocalTime.NOON)){
-            return "Revisar conteúdos da manhã!";
-        } else if (agora.isBefore(LocalTime.of(18, 0))){
-            return "Fazer exercícios práticos!";
-        } else{
-            return "Planejar o dia seguinte!";
-        }
+    public void setEstrategia(EstrategiaSugestao estrategia) {
+        this.estrategia = estrategia;
+    }
+
+    public String sugerirTarefa() {
+        return estrategia.sugerir();
     }
 }

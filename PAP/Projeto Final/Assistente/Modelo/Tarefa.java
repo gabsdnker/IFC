@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Tarefa{
+public class Tarefa {
     private String titulo;
 
     public Tarefa(String titulo){

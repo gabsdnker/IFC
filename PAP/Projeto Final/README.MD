@@ -1,18 +1,75 @@
-# Projeto Final 
-## Ideia
-Assitente de Estudos com Agenda Inteligente
+# 📚 Assistente de Estudos com Agenda Inteligente
 
-### Objetivo
-Criar um sistema com interface gráfica que gerencie tarefas e simule uma recomendação de estudo com IA (Inteligência Artificial)
+Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para estudantes, que oferece uma interface gráfica simples e sugestões inteligentes baseadas em horários. A aplicação foi desenvolvida em Java e utiliza **6 Padrões de Projeto** como parte da arquitetura.
 
-### Pesquisa
-https://www.arquivodecodigos.com.br/dicas/1121-java-java-swing-para-iniciantes-como-criar-seu-primeiro-aplicativo-de-interface-grafica-em-java-swing.html 
+## 🚀 Funcionalidades
 
-### Explicação
-Foi criado uma interface gráfica simples para poder ser utilizado por qualquer usuário.
+- Cadastro e visualização de tarefas
+- Organização de tarefas dentro de projetos
+- Sugestões inteligentes baseadas na hora do dia
+- Interface gráfica simples com `Swing`
+- Aplicação de padrões de projeto consagrados
 
-Para rodar o programa é só ir no terminal, selecionar a pasta aonde está o programa e compilar.
--COMO COMPILAR UM CÓDIGO JAVA?
+---
 
-javac InterfaceGrafica.java
-java InterfaceGrafica.java
+## 🧠 Padrões de Projeto Utilizados
+
+| Padrão             | Local de Aplicação |
+|--------------------|---------------------|
+| **Singleton**      | `GerenciadorDeTarefas.java` para garantir instância única do gerenciador |
+| **Factory Method** | `FabricaTarefa.java` e `FabricaProjeto.java` para criação padronizada de objetos |
+| **Strategy**       | `SugeridorInteligente.java` usa estratégias diferentes para sugerir tarefas |
+| **Observer**       | `InterfaceGrafica.java` observa o `GerenciadorDeTarefas` e atualiza a interface |
+| **Command**        | `ComandoAdicionarTarefa.java` encapsula ações de adicionar tarefa |
+| **MVC (Model-View-Controller)** | Separação entre `Modelo`, `Controle` e `InterfaceGrafica (View)` |
+
+---
+
+## 🗂️ Estrutura de Pacotes
+
+src/
+├── InterfaceGrafica.java
+├── Controle/
+│   ├── ControladorDeTarefas.java
+│   └── GerenciadorDeTarefas.java
+├── Modelo/
+│   ├── Tarefa.java
+│   └── Projeto.java
+├── Servico/
+│   ├── SugeridorInteligente.java
+│   ├── EstrategiaSugestao.java
+│   ├── EstrategiaHorario.java
+│   └── EstrategiaAleatoria.java
+├── Fabrica/
+│   ├── FabricaTarefa.java
+│   └── FabricaProjeto.java
+├── Observer/
+│   └── ObservadorTarefa.java
+└── Command/
+    ├── Comando.java
+    └── ComandoAdicionarTarefa.java
+
+---
+
+## 🎓 Tecnologias Utilizadas
+
+- Java 11+
+- Swing (GUI)
+- Padrões de Projeto (GoF)
+
+---
+
+## 🧪 Como Executar
+
+1. Clone o repositório
+2. Compile todos os arquivos Java
+3. Execute `InterfaceGrafica.java`
+
+javac *.java
+java InterfaceGrafica
+
+## 🧾 Licença
+Este projeto é apenas para fins acadêmicos. Todos os direitos reservados ao autor.
+
+## 👨‍💻 Autor
+Desenvolvido por Gabrielli Danker — Aluna do Instituto Federal Catarinense, Campus Blumenau.

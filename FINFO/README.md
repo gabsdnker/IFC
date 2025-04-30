@@ -1,3 +1,3 @@
 # Hamming em python
 
-OBS.: Incompleto
+OBS.: Incompleto, feito em 2022

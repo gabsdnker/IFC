@@ -1,6 +1,6 @@
 # 📚 Assistente de Estudos com Agenda Inteligente
 
-Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para estudantes, que oferece uma interface gráfica simples e sugestões inteligentes baseadas em horários. A aplicação foi desenvolvida em Java e utiliza **6 Padrões de Projeto** como parte da arquitetura.
+Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para estudantes, que oferece uma interface gráfica simples e sugestões inteligentes baseadas em horários. A aplicação foi desenvolvida em Java e utiliza ***6 Padrões de Projeto*** como parte da arquitetura.
 
 ## 🚀 Funcionalidades
 
@@ -9,6 +9,7 @@ Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para e
 - Sugestões inteligentes baseadas na hora do dia
 - Interface gráfica simples com `Swing`
 - Aplicação de padrões de projeto consagrados
+
 
 ---
 

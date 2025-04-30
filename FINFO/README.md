@@ -1,3 +1,3 @@
-#Hamming em python
+# Hamming em python
 
 OBS.: Incompleto

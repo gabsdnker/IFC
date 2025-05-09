@@ -77,4 +77,4 @@ Este projeto é apenas para fins acadêmicos. Todos os direitos reservados ao au
 ## 👨‍💻 Autor
 Desenvolvido por Gabrielli Danker — Aluna do Instituto Federal Catarinense, Campus Blumenau.
 
-<img src="https://github.com/gabsdnker/IFC/tree/main/PAP/Projeto%20Final/images/Inicio.png" alt="Imagem do Projeto" width="200" height="400">
+<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Inicio.PNG" alt="Imagem do Projeto" width="200" height="400">

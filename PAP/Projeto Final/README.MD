@@ -68,6 +68,7 @@ src/
 3. Execute `InterfaceGrafica.java`
 
 javac *.java
+
 java InterfaceGrafica
 
 ## 🧾 Licença

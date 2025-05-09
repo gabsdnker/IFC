@@ -7,7 +7,10 @@ import java.util.List;
 public class Projeto{
     private String nome;
     private List<Tarefa> tarefas;
+        private List<Observer.ObservadorTarefa> observadores = new ArrayList<>();
 
+    // Construtor da classe Projeto
+    // Inicializa a lista de tarefas e o nome do projeto
     public Projeto(String nome){
         this.tarefas = new ArrayList<>();
         this.nome = nome;
@@ -21,10 +24,14 @@ public class Projeto{
         return tarefas;
     }
 
-    public void exibir(){
-        System.out.println("Projeto: " + nome);
-        for(Tarefa  t : tarefas){
-            t.exibir();
+    // Método para adicionar um observador
+    public void adicionarObservador(Observer.ObservadorTarefa o) {
+        observadores.add(o);
+    }
+
+    public void notificarObservador() {
+        for (Observer.ObservadorTarefa o : observadores) {
+            o.atualizar();
         }
     }
 }

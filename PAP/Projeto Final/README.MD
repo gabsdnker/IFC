@@ -46,6 +46,7 @@ src/
 │   └── FabricaProjeto.java
 ├── Observer/
 │   └── ObservadorTarefa.java
+│   └── ObservadorTarefaImpl.java
 └── Command/
     ├── Comando.java
     └── ComandoAdicionarTarefa.java
@@ -74,3 +75,5 @@ Este projeto é apenas para fins acadêmicos. Todos os direitos reservados ao au
 
 ## 👨‍💻 Autor
 Desenvolvido por Gabrielli Danker — Aluna do Instituto Federal Catarinense, Campus Blumenau.
+
+![Imagem do Projeto](images/Inicio.png)

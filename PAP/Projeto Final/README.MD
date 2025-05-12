@@ -28,7 +28,7 @@ Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para e
 
 ## 🗂️ Estrutura de Pacotes
 
-<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Capturar.PNG" alt="Estrutura" width="200" height="300">
+<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Capturar.PNG" alt="Estrutura" width="200" height="400">
 
 ---
 

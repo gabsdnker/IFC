@@ -46,7 +46,7 @@ Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para e
 2. Compile todos os arquivos Java `javac *.java`
 3. Execute `InterfaceGrafica.java`
 
-    java InterfaceGrafica
+    `java InterfaceGrafica`
 
 ## 🖼️ Interface Gráfica
 

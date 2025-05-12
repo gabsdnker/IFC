@@ -28,28 +28,7 @@ Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para e
 
 ## 🗂️ Estrutura de Pacotes
 
-src/
-├── InterfaceGrafica.java
-├── Controle/
-│   ├── ControladorDeTarefas.java
-│   └── GerenciadorDeTarefas.java
-├── Modelo/
-│   ├── Tarefa.java
-│   └── Projeto.java
-├── Servico/
-│   ├── SugeridorInteligente.java
-│   ├── EstrategiaSugestao.java
-│   ├── EstrategiaHorario.java
-│   └── EstrategiaAleatoria.java
-├── Fabrica/
-│   ├── FabricaTarefa.java
-│   └── FabricaProjeto.java
-├── Observer/
-│   └── ObservadorTarefa.java
-│   └── ObservadorTarefaImpl.java
-└── Command/
-    ├── Comando.java
-    └── ComandoAdicionarTarefa.java
+<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Capturar.PNG" alt="Estrutura" width="300" height="100">
 
 ---
 
@@ -71,10 +50,12 @@ javac *.java
 
 java InterfaceGrafica
 
+## 🖼️ Imagem Projeto
+
+<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Inicio.PNG" alt="Imagem do Projeto" width="500" height="700">
+
 ## 🧾 Licença
 Este projeto é apenas para fins acadêmicos. Todos os direitos reservados ao autor.
 
 ## 👨‍💻 Autor
 Desenvolvido por Gabrielli Danker — Aluna do Instituto Federal Catarinense, Campus Blumenau.
-
-<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Inicio.PNG" alt="Imagem do Projeto" width="500" height="700" text-align= "center">

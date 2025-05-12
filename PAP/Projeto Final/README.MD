@@ -51,6 +51,9 @@ javac *.java
 java InterfaceGrafica
 
 ## 🖼️ Interface Gráfica
+
+Imagem da interface gráfica inicial da implementação.
+
 <p align="center">
   <img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Inicio.PNG" alt="Imagem do Projeto" width="500" height="700">
 </p>

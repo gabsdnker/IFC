@@ -43,12 +43,10 @@ Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para e
 ## 🧪 Como Executar
 
 1. Clone o repositório
-2. Compile todos os arquivos Java
+2. Compile todos os arquivos Java `javac *.java`
 3. Execute `InterfaceGrafica.java`
 
-javac *.java
-
-java InterfaceGrafica
+    java InterfaceGrafica
 
 ## 🖼️ Interface Gráfica
 

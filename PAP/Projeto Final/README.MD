@@ -28,7 +28,7 @@ Este projeto é um sistema de gerenciamento de tarefas e projetos voltado para e
 
 ## 🗂️ Estrutura de Pacotes
 
-<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Capturar.PNG" alt="Estrutura" width="200" height="400">
+<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Capturar.PNG" alt="Estrutura" width="300" height="500">
 
 ---
 
@@ -51,8 +51,9 @@ javac *.java
 java InterfaceGrafica
 
 ## 🖼️ Imagem Projeto
-
-<img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Inicio.PNG" alt="Imagem do Projeto" width="500" height="700">
+<p align="center">
+  <img src="https://github.com/gabsdnker/IFC/blob/main/PAP/Projeto%20Final/images/Inicio.PNG" alt="Imagem do Projeto" width="500" height="700">
+</p>
 
 ## 🧾 Licença
 Este projeto é apenas para fins acadêmicos. Todos os direitos reservados ao autor.

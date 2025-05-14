@@ -1,5 +1,10 @@
 # src/scraper.py
 
+# 1- sudo apt install python3.12-venv
+# 2- sudo apt install python3-venv
+# 3- python3 -m venv venv
+# 4- source venv/bin/activate
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd

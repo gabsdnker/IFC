@@ -1,30 +1,42 @@
+# src/scraper.py
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# pip install requests beautifulsoup4 pandas
+def get_senadores_em_exercicio():
+    url = "https://www25.senado.leg.br/web/senadores/em-exercicio"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, "html.parser")
 
-url= "https://placarcongresso.com/pages/s-ranking.html"
+    tabela = soup.find("table", {"summary": "Senadores em exercício"})
+    linhas = tabela.find_all("tr")[1:]  # pula o cabeçalho
 
-response = requests.get(url)
-response.encoding = 'utf-8'
-soup = BeautifulSoup(response.text, "html.parser")
+    senadores = []
 
-table = soup.find("table")
+    for linha in linhas:
+        colunas = linha.find_all("td")
 
-senadores= []
-partidos= []
+        nome = colunas[0].get_text(strip=True)
+        partido_uf = colunas[1].get_text(strip=True)
 
-for row in table.find_all("tr")[1:]:
-    cols = row.find_all("td")
-    if len(cols)>= 3:
-        nome= cols[1].get_text(strip= True)
-        partido = cols[2].get_text(strip = True)
-        senadores.append(nome)
-        partidos.append(partido)
+        if " - " in partido_uf:
+            partido, uf = partido_uf.split(" - ")
+        else:
+            partido, uf = partido_uf, ""
 
-df = pd.DataFrame({"Senadores": senadores, "Partidos": partidos})
+        senadores.append({
+            "nome": nome,
+            "partido": partido,
+            "uf": uf
+        })
 
-df.to_csv("senadores_partidos.csv", index=False, encoding="utf-8")
+    df = pd.DataFrame(senadores)
+    return df
 
-print(df.head())
+
+if __name__ == "__main__":
+    df_senadores = get_senadores_em_exercicio()
+    df_senadores.to_csv("data/senadores.csv", index=False)
+    print("Arquivo senadores.csv salvo com sucesso!")
+

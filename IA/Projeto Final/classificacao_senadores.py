@@ -35,4 +35,4 @@ with open(saida_csv, mode='w', newline='', encoding='utf-8') as csvfile:
     for senador in senadores_classificados:
         writer.writerow(senador)
 
-print(f'✅ CSV com classificação gerado em: {saida_csv}')
+print(f'CSV com classificação gerado em: {saida_csv}')

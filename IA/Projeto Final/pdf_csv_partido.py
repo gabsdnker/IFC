@@ -1,46 +1,46 @@
 import pdfplumber
-import re
 import csv
+import re
 import os
 
-pasta_pdfs = "PDFs"
-saida_csv = "CSVs/partidos/senadores_nome_partido.csv"
+pasta_pdfs = 'PDFs'
+arquivo_saida = 'CSVs/partidos/senadores_nome_partido.csv'
 
-dados = []
+pagina_desejada = 0
 
-padrao = re.compile(
-    r"SENADOR:\s*(.+?)\s+PARTIDO:\s*(.+?)\s+UF:\s*([A-Z]{2})",
-    re.IGNORECASE
-)
+# Regex melhorado para pegar nomes com ponto e apóstrofo
+padrao = r'(SENADOR(?:A)?: [\w\sÁÉÍÓÚÂÊÔÃÕÇ\.\'-]+) PARTIDO: ([\w/]+)'
 
-# Percorre todos os arquivos da pasta_pdfs
+senadores = []
+
 for arquivo in os.listdir(pasta_pdfs):
-    if arquivo.lower().endswith(".pdf"):
+    if arquivo.endswith('.pdf'):
         caminho_pdf = os.path.join(pasta_pdfs, arquivo)
-        with pdfplumber.open(caminho_pdf) as pdf:
-            for pagina in pdf.pages:
-                texto = pagina.extract_text()
-                if not texto:
-                    continue
-                for linha in texto.split('\n'):
-                    match = padrao.search(linha)
-                    if match:
-                        nome, partido, uf = match.groups()
-                        dados.append((nome.strip(), partido.strip(), uf.strip()))
+        print(f'Lendo {caminho_pdf}')
+        try:
+            with pdfplumber.open(caminho_pdf) as pdf:
+                if pagina_desejada < len(pdf.pages):
+                    pagina = pdf.pages[pagina_desejada]
+                    texto_pagina = pagina.extract_text()
+                    
+                    matches = re.findall(padrao, texto_pagina)
+                    for match in matches:
+                        nome_completo = match[0].replace('SENADOR: ', '').replace('SENADORA: ', '').strip()
+                        partido = match[1].strip()
+                        senadores.append({
+                            'Nome': nome_completo,
+                            'Partido': partido
+                        })
+                else:
+                    print(f'O PDF {arquivo} não tem página {pagina_desejada + 1}')
+        except Exception as e:
+            print(f'Erro ao processar {caminho_pdf}: {e}')
 
-# Remover duplicatas
-dados_unicos = list(set(dados))
+with open(arquivo_saida, mode='w', newline='', encoding='utf-8') as arquivo_csv:
+    writer = csv.DictWriter(arquivo_csv, fieldnames=['Nome', 'Partido'])
+    writer.writeheader()
+    for senador in senadores:
+        writer.writerow(senador)
 
-# Garantir que a pasta existe
-os.makedirs(os.path.dirname(saida_csv), exist_ok=True)
-
-# Salvar CSV
-with open(saida_csv, "w", newline="", encoding="utf-8") as f:
-    writer = csv.writer(f)
-    writer.writerow(["nome", "partido", "uf"])
-    for linha in dados_unicos:
-        writer.writerow(linha)
-
-print(f"✅ CSV com todos os senadores gerado: {saida_csv}")
-
-#NÃO TESTADO COMPLETO: É PARA ESSE PROGRAMA LER TODOS OS PDFS DE CADA SENADOR E PEGAR O NOME, PARTIDO E UF
+print(f'CSV gerado com sucesso! Total de registros: {len(senadores)}')
+print(f'Arquivo salvo em: {arquivo_saida}')

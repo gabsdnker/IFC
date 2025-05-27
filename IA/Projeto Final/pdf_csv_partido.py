@@ -3,6 +3,8 @@ import csv
 import re
 import os
 
+# pip install pdfplumber --break-system-packages
+
 pasta_pdfs = 'PDFs'
 arquivo_saida = 'CSVs/partidos/senadores_nome_partido.csv'
 

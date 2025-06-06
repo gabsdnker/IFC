@@ -3,5 +3,6 @@
 ## ✔️ Linguagens utilizadas
 
 - ``Python``
+- ``Prolog``
 - ``Haskell``
 - ``Java``

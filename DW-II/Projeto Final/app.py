@@ -1,10 +1,6 @@
 # Autores: Gabriel Rodrigues, Gabrielli Danker, and Marco Antonio
 # Ultima edição: 18/06/2024
 
-# O que falta fazer:
-# 1- Página de pagamento
-# 2- Atualizar as novas informações no perfil (!)
-
 # Imports necessários
 from flask import Flask, request, session, render_template, redirect, url_for
 from flask_session import Session

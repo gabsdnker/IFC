@@ -8,7 +8,7 @@ import base64
 # SERVER_ADDR = ["http://191.52.7.101:5000", "http://191.52.7.100:5000"]
 SERVER_ADDR = ["http://191.52.6.114:5000", "http://191.52.7.91:5000","http://191.52.6.62:5000","http://191.52.7.100:5000","http://191.52.6.63:5000"]
 
-FILE_DIR = "./files"
+FILE_DIR = "./ClientDir/files"
 
 class File:
     # construtor com valor padrão nos parâmetros

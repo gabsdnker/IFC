@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 # biblioteca CORS
 from flask_cors import CORS
 import os
+import base64
 
 SERVER_DIR = "./files/"
 
@@ -102,24 +103,24 @@ with app.app_context():
         return resposta
 
     # Rota antiga - usando método GET
-    @app.route("/escrever_antigo/<file_name>/<conteudo>")
-    def escrever_antigo(file_name, conteudo):
-        try:
-            openedFile = open(SERVER_DIR + file_name, "w")
-            openedFile.write(conteudo)
-            openedFile.close()
-            print(conteudo)
-            resposta = jsonify({"header": "OK", "detail": "success!"})
-        except Exception as e:
-            resposta = jsonify({"header": "erro", "detail": str(e)})
-        return resposta
+    #@app.route("/escrever_antigo/<file_name>/<conteudo>")
+    #def escrever_antigo(file_name, conteudo):
+     #   try:
+      #      openedFile = open(SERVER_DIR + file_name, "w")
+       #     openedFile.write(conteudo)
+        #    openedFile.close()
+         #   print(conteudo)
+          #  resposta = jsonify({"header": "OK", "detail": "success!"})
+        #except Exception as e:
+         #   resposta = jsonify({"header": "erro", "detail": str(e)})
+        #return resposta
     
     # Para testar a rota: curl -i -X POST -F files=@nome_arquivo http://127.0.0.1:5000/escrever
     @app.route("/escrever", methods=['POST'])
     def escrever():
         try:
             f = request.files['files']
-            # print(f.filename)
+            print(f.filename)
             f.save(SERVER_DIR + f.filename)
             resposta = jsonify({"header": "OK", "detail": "success!"})
         
@@ -131,10 +132,11 @@ with app.app_context():
     @app.route("/ler/<file_name>")
     def ler(file_name):
         try:
-            openedFile = open(SERVER_DIR + file_name, "r")
+            openedFile = open(SERVER_DIR + file_name, "rb")
             conteudo = openedFile.read()
+            conteudo_b64 = base64.b64encode(conteudo).decode("utf-8")
             openedFile.close()
-            resposta = jsonify({"header": "OK", "detail": conteudo})
+            resposta = jsonify({"header": "OK", "detail": conteudo_b64})
         except Exception as e:
             resposta = jsonify({"header": "erro", "detail": str(e)})
         return resposta
@@ -144,7 +146,8 @@ with app.app_context():
     # https://stackoverflow.com/questions/17309889/how-to-debug-a-flask-app
 
 
-'''
+'''Para testar o servidor, execute o seguinte comando no terminal:
+python3 server.py
 resultado da invocação ao servidor:
 
 curl localhost:5000/listar

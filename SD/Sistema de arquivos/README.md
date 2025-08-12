@@ -7,3 +7,6 @@
     python3 ./ClientDir/client.py
 
 Obs.: Não pode ter arquivos nas pastas ./files
+
+
+Desenvolvido por Fernanda Martins e Gabrielli Danker 

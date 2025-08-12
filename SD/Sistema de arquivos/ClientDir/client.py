@@ -3,9 +3,12 @@ import requests
 import json
 import os
 import time
+import base64
 
-SERVER_ADDR = ["http://191.52.7.100:5000", "http://191.52.7.101:5000", "http://191.52.7.99:5000", "http://191.52.6.51:5000"]
-FILE_DIR = "./ClientDir/files"
+# SERVER_ADDR = ["http://191.52.7.101:5000", "http://191.52.7.100:5000"]
+SERVER_ADDR = ["http://191.52.6.114:5000", "http://191.52.7.91:5000","http://191.52.6.62:5000","http://191.52.7.100:5000","http://191.52.6.63:5000"]
+
+FILE_DIR = "./files"
 
 class File:
     # construtor com valor padrão nos parâmetros
@@ -28,51 +31,38 @@ class File:
         }
 
 class Client:
-    # construtor da classe Client
-    # recebe o endereço do servidor e o diretório de arquivos
-    # e inicializa os atributos necessários
+
     def __init__(self, server_addr=SERVER_ADDR, file_dir=FILE_DIR):
-        # inicializa os atributos da classe
         self.server_addr = server_addr
-        # diretório onde os arquivos serão armazenados
         self.file_dir = file_dir
-        # listas para armazenar os arquivos do cliente e do servidor
         self.client_prev_list = None
-        # listas para armazenar os arquivos atuais do cliente e do servidor
         self.client_cur_list = None
-        # listas para armazenar os arquivos do servidor
         self.server_prev_list = None
-        # lista de operações a serem realizadas
         self.server_cur_list = None
-        # lista de operações a serem realizadas
         self.operation_list = []
 
     def list_server_files(self, verbose=False):
-        # lista de arquivos do servidor
         for addr in self.server_addr:
-            # faz uma requisição GET para o servidor
-            # e obtém a lista de arquivos
             response = requests.get(f'{addr}/listar').json()
+            print((response['files']))
             if verbose:
-                # imprime os nomes dos arquivos retornados
                 for n in response['files']:
                     print(n['name'])
             print(response)
             if response:
-                # retorna a lista de arquivos do servidor
+                #Pode retornar um erro 
                 return response['files']
 
     def list_local_files(self, verbose=False):
-        # lista de arquivos locais
         files = []
         json_files = []
 
         dirEntrys = os.scandir(self.file_dir)
-
+        
         for entry in dirEntrys:
             if entry.is_file() and entry.name != "client.py":
                 file = File(entry.name, entry.stat().st_ino, entry.stat().st_mtime)
-                print(file)
+                #print(file)
                 files.append(file)
 
         for file in files:
@@ -124,17 +114,17 @@ class Client:
 
             files = {'files': open(f'{self.file_dir}/{file_name}', 'rb')}
             response = requests.post(f'{addr}/escrever', files=files).json()
+            if response['header'] == "OK":
+                print(file_name, "uploaded to", addr)
 
         return response['header'] == "OK"
 
 
     def read_from_file(self, file_name):
-        response = requests.get(f'{self.server_addr}/ler/{file_name}').json()
-        
-        if response['header'] == "OK":
-            print(type(response['detail']))
-            return response['detail']
-    
+        for addr in self.server_addr:
+            response = requests.get(f'{addr}/ler/{file_name}').json()
+            if response['header'] == "OK":
+                return response['detail']
         return None
 
     def update_local_files(self):
@@ -143,9 +133,8 @@ class Client:
     def install(self):
 
         # get the servers folder files list
-
+        
         # create locally all files recovered from the server
-
         pass
 
     def merge(self):
@@ -172,25 +161,20 @@ class Client:
 
 
 def test():
-    # Test the Client class
     client_1 = Client()
     file_name = "newFileFromClient.txt"
     content_to_write = "conteudo-para-teste-de-escrita"
 
     print("Initial files:")
-    # List files on the server
     client_1.list_server_files(verbose=True)
     #client_1.dump()
-
-    # Create the file
+    
     print(f"*** Creating file {file_name}")
     client_1.create_file(file_name)
 
-    # Check if the file was created
     print("*** The file was created?")
     client_1.list_server_files(verbose=True)
     
-    # Write content to the file
     print(f"*** Writing {content_to_write} to {file_name}")
     if client_1.write_to_file(file_name, content_to_write):
         print("Success in writing")
@@ -220,7 +204,7 @@ def run():
         
         # Se não existir lista local:
         if client.client_prev_list == None:
-            
+
             # Pegar lista do servidor
             client.server_prev_list = client.list_server_files()
             
@@ -229,8 +213,9 @@ def run():
                 # Solicitar arquivo para o servidor e criar no local
                 f = open(f"{client.file_dir}/{file['name']}", "w")
                 content = client.read_from_file(file['name'])
-                f.write(content)
-                f.close()
+                if content is not None:
+                    f.write(content)
+                    f.close()
             
             # Salvar lista local 
             client.client_prev_list = client.server_prev_list
@@ -264,9 +249,24 @@ def run():
 
     # -- -- # CASO 2- Novo arquivo no servidor
     # -- -- percorre a lista do servidor atual
-    # -- -- -- se o elemento não existe na anterior
+    # -- -- -- se o elemento não existe na anteiror
     # -- -- -- -- adiciona na lista de execução (add_local, name_arquivo)
-    #
+            for cur_file in client.server_cur_list:
+                # Supor que o arquivo não existe
+                exists = False
+                # procurar arquivo atual na lista anterior
+                for file in client.client_cur_list:
+                    # se o elemento não existe na anteiror
+                    if cur_file['name'] == file['name']:
+                        # encontrou o arquivo, sinalizar e interromper busca
+                        exists = True
+                # Se o arquivo não existe
+                if not exists:
+                    # ler conteudo do arquivo
+                    content = client.read_from_file(cur_file['name'])
+                    # adiciona na lista de execução (add_local (operation[0]), name_arquivo (operation[1]), conteudo (operation[2]))
+                    client.operation_list.append(('add_local',cur_file['name'],content))
+               
 
     # -- -- # CASO 3 - arquivo removido no local
     # -- -- percorre a lista do local anterior
@@ -279,19 +279,24 @@ def run():
     # -- -- -- -- adiciona na lista de execução (remove_local, name_arquivo)
 
     # -- -- Executar ações na lista
+    
             for operation in client.operation_list:
                 if(operation[0] == 'add_server'):
                     # cria arquivo no servidor
-                    client.create_file(operation[1])
-                    client.write_to_file(operation[1], operation[2])
+                    #client.create_file(operation[1])
+                    #client.write_to_file(operation[1], operation[2])
                     client.upload(operation[1])
                     print(f"Novo arquivo local enviado para o servidor - {operation[1]}")
                 
                 elif(operation[0] == 'add_local'):
                     # cria arquivo local
-                    newFile = open("./files/" + operation[1], "x")
-                    newFile.write(operation[2])
-                    newFile.close()
+                    file = os.path.join(client.file_dir, operation[1])
+                    # abre o arquivo para escrita binária
+                    with open(file, "wb") as file:
+                        # escreve o conteudo decodificado no arquivo
+                        if operation[2] is not None:
+                            file.write(base64.b64decode(operation[2]))
+                    print(f"Arquivo {operation[1]} baixado do servidor para o cliente.")
                 
                 elif(operation[0] == 'remove_server'):
                     # remove arquivo do servidor
@@ -299,7 +304,8 @@ def run():
                 
                 elif(operation[0] == 'remove_local'):
                     # remove arquivo local
-                    os.remove("./files/" + operation[1])
+                    os.remove(f"{client.file_dir}/{operation[1]}")
+
     # -- -- limpa lista de operações
             client.operation_list = []
             

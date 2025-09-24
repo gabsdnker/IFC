@@ -1,40 +1,45 @@
-.section .data
-n:		.word 10	#Quantidade de termos 
-fibonacci:		.space 40 #Espaços para 10 inteiros (4 bytes cada)
-
-.section .text
-
 .global _start
+    .text
+
 _start:
-	la a0, fibonacci #a0 aponta para o início do array
-	li a1, 0 #a1 = f(0)
-	li a2, 1 #a2 = f(1)
-	li a3, 0 #a3 = i (contador)
-	lw a4, n #a4 = n (total de termos)
+    li a0, 8          
+    jal ra, fib       
 
-	#Salvar o primeiro termo
-	sw a1, 0(a0)
-	addi a3, a3, 1
-	
-	#Salvar o segundo termo
-	sw a2, 4(a0)
-	addi a3, a3, 1
-	
-loop:
-    bge a3, a4, end #Se i >= n, fim
-    add a5, a1, a2	 #a5 = a1 + a2 (próximo termo)
+    li a7, 93         
+    ecall            
 
-    slli a6, a3, 2  #a6= i * 4 (deslocamento de bytes)
-    add a7, a0, a6 #a7= endereço do próximo espaço
-    sw a5, 0(a7) 	#salva f(i) = a5
+fib:
+    addi sp, sp, -32
+    sd ra, 24(sp)
+    sd a0, 0(sp)
 
-    mv a1, a2 	# atualiza a1 f(n-2)
-    mv a2, a5 	 # atualiza a2 f(n-1)
-	
-    addi a3, a3, 1  # i++
-    j loop #volta pro início do loop
+    beq a0, x0, IS_ZERO   
+    li t0, 1
+    beq a0, t0, IS_ONE    
 
-end:
-    j end  #loop infinito para encerrar o programa
-	
-	
+
+    addi a0, a0, -1
+    jal ra, fib
+    sd a0, 8(sp)          
+
+
+    ld a0, 0(sp)
+    addi a0, a0, -2
+    jal ra, fib
+
+    ld t1, 8(sp)
+    add a0, a0, t1
+
+    j END_FIB
+
+IS_ZERO:
+    mv a0, x0
+    j END_FIB
+
+IS_ONE:
+    li a0, 1
+
+END_FIB:
+    ld ra, 24(sp)
+    addi sp, sp, 32
+    ret
